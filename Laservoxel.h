@@ -98,6 +98,10 @@ class LaserVoxel
     LaserPoints dilation(LaserPoints vox_cnts, uint min_dilation=1,double struct_element_a=1.0,
                                      double struct_element_b=1.0, double struct_element_c=1.0,
                                      vector< vector < vector < int > > > vec_ijk={});
+    /// dilation_customized
+/*    LaserPoints LaserVoxel::dilation_customized(LaserPoints vox_cnts, uint min_dilation, double struct_element_a,
+                                                double struct_element_b, double struct_element_c,
+                                                vector<vector<vector<int> > > vec_ijk);*/
 
     /// defining a template (e.g. a door size) the method finds occupied voxels in the border of the templates
     /// the center of the template is the refrence for marching the nbr-hood voxels
@@ -148,7 +152,8 @@ class LaserVoxel
    LaserPoints export_all();
     /// export points inside a given voxel
     LaserPoints export_voxelpnts(int i=0, int j=0, int k=0);
-    vector<vector<vector<int> > > export_vox_centres(int min_points_in_vox=1, char* output="D://test//morph//result//vox_centers.laser"); ///only exports the centres of voxels (where laserpoints are)
+    vector<vector<vector<int> > > export_vox_centres(int min_points_in_vox=1,
+            char* output="D://test//morph//result//vox_centers.laser"); ///only exports the centres of voxels (where laserpoints are)
 };
 
 #endif

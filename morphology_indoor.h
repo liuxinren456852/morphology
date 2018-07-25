@@ -23,5 +23,8 @@
 
 void morphological_indoor(char* laserFile, double resolution, char *method);
 
+LaserPoints transfer_voxel_attributes (LaserPoints original_points, LaserPoints voxel_centers_reference,
+                                       LaserPoints voxel_cents_temp, double vox_l);
+
 //LaserPoints laserpoints;
 

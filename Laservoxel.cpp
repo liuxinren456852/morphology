@@ -311,6 +311,12 @@ vector<vector<vector<int> > > LaserVoxel::export_vox_centres(int min_points_in_v
                         lp.SetAttribute(LabelTag, found_points_in_vox >= min_points_in_vox ? 1 : 0);
                         int vox_points = found_points_in_vox;
                         lp.SetAttribute(ScalarTag, vox_points);
+                        /// set most frequent segment number
+                        if(tmpl.HasAttribute (SegmentNumberTag)){
+                            int majority_segment_no, cnts;
+                            majority_segment_no = tmpl.MostFrequentAttributeValue (SegmentNumberTag, cnts);
+                            lp.SetAttribute (SegmentNumberTag, majority_segment_no);
+                        }
                         l.push_back(lp);
                         inx = l.size() - 1;
                         v[i][j][k] = int(inx);
@@ -331,7 +337,25 @@ vector<vector<vector<int> > > LaserVoxel::export_vox_centres(int min_points_in_v
     return v;
 }
 
-/// check if voxel neoghbors is change from 0 to 1 it is an edge
+/// transfer attributes (segment, time, ...) from on voxel center result to the main voxel_center_all
+/*  becasue the voxel_center generated from the original laserpoints is based on all operations, the attributes from
+ * other functions should be transfered to voxel_centers_all
+ * NOTE: LABELS remain the same, and wont be transferred.*/
+
+/*void LaserVoxel::transfer_voxel_attributes(LaserPoints temp_vox_centers, LaserPoints original_laserpoints,
+                                             vector<vector<vector<int> > > vec_ijk, LaserPointTag &tag){
+
+
+    for(auto &vox_center : temp_vox_centers){
+        uint i = index_from_realX(vox_center.X ());
+        uint j = index_from_realY(vox_center.Y ());
+        uint k = index_from_realZ(vox_center.Z ());
+    }
+}*/
+
+
+
+/// check if voxel neoghbors change from 0 to 1 it is an edge
 /// this is for detection of transition from occupied to empty voxels for occlusion test
 LaserPoints LaserVoxel::edge_change() {
 
@@ -896,7 +920,7 @@ LaserPoints LaserVoxel::dilation(LaserPoints vox_cnts, uint min_dilation, double
                             abc_labeltag = vox_cnts[abc_inx].Attribute(LabelTag);
 
                             //win_centers.push_back(vox_centers[abc_inx]); //debugger
-                            if (abc_labeltag == 1) {
+                            if (abc_labeltag == 0) {
                                 labeltag1_cnt++;
                                 if (labeltag1_cnt >= min_dilation)
                                     goto ChangeLabel1;
@@ -908,7 +932,8 @@ LaserPoints LaserVoxel::dilation(LaserPoints vox_cnts, uint min_dilation, double
 
                 if (labeltag1_cnt >= min_dilation) {
                     int ijk_inx = vec_ijk[i][j][k];
-                    vox_centers_dilate[ijk_inx].SetAttribute(LabelTag, 1);
+                    vox_centers_dilate[ijk_inx].SetAttribute(LabelTag, 0);
+
                 }
             }
     //vox_centers_dilate.Write("D://test//morph//vox_centers_dilate.laser", false);
@@ -936,7 +961,9 @@ LaserPoints LaserVoxel::erosion(LaserPoints vox_cnts, uint min_erosion, double s
 
     /// erosion
     LaserPoints vox_cnt_erosion;
+    LaserPoints vox_cnt_erosion_relabeld; /// this is extra dataset to shows changed voxels from 0 to 1 and viceversa
     vox_cnt_erosion = vox_cnts; // vox_centers_erosion later will be labeled
+    vox_cnt_erosion_relabeld = vox_cnts;  /// also later will be labeled
     for (int i = 0; i < int(vox_num_X); i++)
         for (int j = 0; j < int(vox_num_Y); j++)
             for (int k = 0; k < int(vox_num_Z-1); k++) {
@@ -967,7 +994,8 @@ LaserPoints LaserVoxel::erosion(LaserPoints vox_cnts, uint min_erosion, double s
                             abc_labeltag = vox_cnts[abc_inx].Attribute(LabelTag);
 
                             //win_centers.push_back(vox_centers[abc_inx]); //debugger
-                            if (abc_labeltag == 1) {  ///1 for empty space otherwise 0
+                            /// here we count the number of occupied voxels for an empty voxel
+                            if (abc_labeltag == 1) {  // 1 for empty space otherwise 0
                                 labeltag0_cnt++;
                                 if (labeltag0_cnt >= min_erosion)
                                     goto ChangeLabel0;
@@ -975,11 +1003,16 @@ LaserPoints LaserVoxel::erosion(LaserPoints vox_cnts, uint min_erosion, double s
                         } //c
                     } //b
                 }//a
+                /*** if the number of occupied voxel in the filter window (label=1) were more than min_erosion then
+                 we change the label of the current voxel to occupied  */
                 ChangeLabel0:
 
                 if (labeltag0_cnt >= min_erosion) {
                     int ijk_inx = vec_ijk[i][j][k];
-                    vox_cnt_erosion[ijk_inx].SetAttribute(LabelTag, 1); ///1 for empty space otherwise 0
+                    vox_cnt_erosion[ijk_inx].SetAttribute(LabelTag, 1); ///change the empty space to 1
+/*                    if(vox_cnt_erosion_relabeld[ijk_inx].Attribute (LabelTag) != 1){
+                        vox_cnt_erosion_relabeld[ijk_inx].SetAttribute (LabelTag,2);
+                    }*/
                 }
             }
     //vox_centers_erosion.Write("D://test//morph//vox_centers_erosion.laser", false);
@@ -987,6 +1020,82 @@ LaserPoints LaserVoxel::erosion(LaserPoints vox_cnts, uint min_erosion, double s
     return vox_cnt_erosion;
 }
 
+
+// *******************************************************************************************************************//
+
+// ************************************************** CUSTOMIZED DILATION *******************************************************//
+// *******************************************************************************************************************//
+/*LaserPoints LaserVoxel::dilation_customized(LaserPoints vox_cnts, uint min_dilation, double struct_element_a,
+                                 double struct_element_b, double struct_element_c,
+                                 vector<vector<vector<int> > > vec_ijk) {
+
+
+    /// n,m,r are the numbers of voxels that window covers in x,y,z dimensions
+    uint n = floor(struct_element_a / vox_length); /// n is the number of voxels the a-dimension of window covers
+    uint m = floor(struct_element_b / vox_length);
+    uint r = floor(struct_element_c / vox_length);
+
+    /// respectively aligned with X,Y,Z axis
+    /// number of voxel counting for neighbors before and after current voxel
+    int step_a = (n - 1) / 2; // n-1 because we exclude i-th index
+    int step_b = (m - 1) / 2;
+    int step_c = (r - 1) / 2;
+
+    /// dilation
+    LaserPoints vox_centers_dilate;
+    vox_centers_dilate = vox_cnts; // vox_centers_dilate later will be labeled
+    for (int i = 0; i < int(vox_num_X); i++)
+        for (int j = 0; j < int(vox_num_Y); j++)
+            for (int k = 0; k < int(vox_num_Z); k++) {
+                printf("\r in reading: i=%d, j=%d, k=%d", i, j, k); /// debugger
+                fflush(stdout);
+
+                int a = 0, b = 0, c = 0;
+                uint labeltag1_cnt = 0;
+
+                for (a = i - step_a; a <= (i + step_a); a++) {
+                    if (a < 0) continue;
+                    if (a >= int(vox_num_X))
+                        continue;
+                    for (b = j - step_b; b <= (j + step_b); b++) {
+                        if (b < 0) continue;
+                        if (b >= int(vox_num_Y))
+                            continue;
+                        for (c = k - step_c; c <= (k + step_c); c++) {
+                            if (c < 0) continue;
+                            if (c >= int(vox_num_Z))
+                                continue;
+                            if (a == i && b == j && c == k) continue; //the point itself is not counted
+                            //printf(" in reading: a=%d, b=%d, c=%d\n",a,b,c); /// debugger
+
+                            int abc_inx = vec_ijk[a][b][c];
+                            int abc_labeltag;
+                            abc_labeltag = vox_cnts[abc_inx].Attribute(LabelTag);
+
+                            //win_centers.push_back(vox_centers[abc_inx]); //debugger
+                            if (abc_labeltag == 1) {
+                                labeltag1_cnt++;
+                                if (labeltag1_cnt >= min_dilation)
+                                    goto ChangeLabel1;
+                            }
+                        } //c
+                    } //b
+                }//a
+                ChangeLabel1:
+
+                if (labeltag1_cnt >= min_dilation) {
+                    int ijk_inx = vec_ijk[i][j][k];
+                    vox_centers_dilate[ijk_inx].SetAttribute(LabelTag, 1);
+                }
+            }
+    //vox_centers_dilate.Write("D://test//morph//vox_centers_dilate.laser", false);
+
+    return vox_centers_dilate;
+}*/
+
+
+
+/**********************************************************************************************************************/
 
 
 /// not deployed codes

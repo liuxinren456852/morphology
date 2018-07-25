@@ -30,5 +30,6 @@ link_directories(${MAPPING_LIB_DIR})
 link_libraries(-lLaserScan -lPhotogrammetry -lBuildings -lEispack -lLinpack -lANN -lnewmat -lgfortran -g3 -llas)
 
 
-set(SOURCE_FILES main.cpp Laservoxel.cpp morphology_indoor.cpp segmentation.cpp 3dbbox.cpp)
+set(SOURCE_FILES main.cpp Laservoxel.cpp morphology_indoor.cpp segmentation.cpp 3dbbox.cpp
+        ConnCompSegmentation.cpp ConnCompSegmentation.h)
 add_executable(morphology ${SOURCE_FILES})
