@@ -114,9 +114,13 @@ class LaserVoxel
                                    double struct_element_b=1.0, double struct_element_c=1.0,
                                    vector< vector < vector < int > > > vec_ijk={});
 
-    LaserPoints door_detection(LaserPoints vox_cnts, LaserPoints traj_points, uint min_dilation=1,double struct_element_a=1.0,
+    LaserPoints door_detection(LaserPoints vox_cnts, LaserPoints traj_points, char* root, uint min_dilation=1,double struct_element_a=1.0,
                                             double struct_element_b=1.0, double struct_element_c=1.0,
                                             vector< vector < vector < int > > > vec_ijk={});
+
+    LaserPoints door_detection2(LaserPoints vox_cnts, LaserPoints traj_points, uint min,
+                                            double r_traj, double r_topdoor, double r_void,
+                                            vector<vector<vector<int> > > vec_ijk);
 
 /*    LaserPoints closed_door(LaserPoints vox_cnts, LaserPoints traj_points, uint min_dilation=1,double struct_element_a=1.0,
                                             double struct_element_b=1.0, double struct_element_c=1.0,
@@ -152,8 +156,7 @@ class LaserVoxel
    LaserPoints export_all();
     /// export points inside a given voxel
     LaserPoints export_voxelpnts(int i=0, int j=0, int k=0);
-    vector<vector<vector<int> > > export_vox_centres(int min_points_in_vox=1,
-            char* output="D://test//morph//result//vox_centers.laser"); ///only exports the centres of voxels (where laserpoints are)
+    vector<vector<vector<int> > > export_vox_centres(int min_points_in_vox, LaserPoints &voxel_centers); ///only exports the centres of voxels (where laserpoints are)
 };
 
 #endif

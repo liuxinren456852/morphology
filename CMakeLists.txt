@@ -25,11 +25,13 @@ include_directories(D:/Mapping/Library/Buildings/include)
 include_directories(D:/Mapping/Library/LaserScan/include)
 include_directories(D:/Mapping/Foreign/ANN/include/ANN)
 include_directories(D:/Mapping/Foreign/ANN/src)
+include_directories(D:/Mapping/Tools/indoor_geometry_reocnstruction)
 #link_directories(D:/Mapping/Library/lib64)
 link_directories(${MAPPING_LIB_DIR})
 link_libraries(-lLaserScan -lPhotogrammetry -lBuildings -lEispack -lLinpack -lANN -lnewmat -lgfortran -g3 -llas)
 
 
 set(SOURCE_FILES main.cpp Laservoxel.cpp morphology_indoor.cpp segmentation.cpp 3dbbox.cpp
-        ConnCompSegmentation.cpp ConnCompSegmentation.h)
+        ConnCompSegmentation.cpp ConnCompSegmentation.h setConsoleColor.cpp
+        ../indoor_geometry_reocnstruction/indoor_reconstruction.h)
 add_executable(morphology ${SOURCE_FILES})

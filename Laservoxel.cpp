@@ -266,7 +266,7 @@ LaserPoints LaserVoxel::export_voxelpnts(int i, int j, int k) {
 }
 
 /// export voxel centers and return a vector that contains ijk and voxelcenters indices
-vector<vector<vector<int> > > LaserVoxel::export_vox_centres(int min_points_in_vox, char* output) {
+vector<vector<vector<int> > > LaserVoxel::export_vox_centres(int min_points_in_vox, LaserPoints &voxel_centers) {
     LaserPoints l;
     size_t found_points_in_vox = 0;
     size_t inx;
@@ -332,8 +332,9 @@ vector<vector<vector<int> > > LaserVoxel::export_vox_centres(int min_points_in_v
                 }
             }
 
-    l.Write(output, false);
+    //l.Write(output, false);
     //l.Write("D://test//morph//result//vox_centers.laser",false);
+            voxel_centers = l;
     return v;
 }
 
@@ -625,7 +626,7 @@ void LaserVoxel::top_cylinder_cap(LaserPoints& door_center_topcap, LaserPoints& 
 
 
 // ************************************************** Door Detection *************************************************//
-LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_points, uint min,
+LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_points,char* root, uint min,
                                                     double struct_element_a,
                                                     double struct_element_b, double struct_element_c,
                                                     vector<vector<vector<int> > > vec_ijk) {
@@ -663,21 +664,22 @@ LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_po
 
     for (int i = 0; i < int(vox_num_X); i++)
         for (int j = 0; j < int(vox_num_Y); j++)
-            //for (int k = 0; k < int(vox_num_Z); k++) {
-            for (int k = step_c; k < step_c + 3; k++) {  /// +3 because we search above the door center and below ceiling
+            for (int k = 0; k < int(vox_num_Z); k++) {
+            //for (int k = step_c; k < step_c + 3; k++) {  /// +3 because we search above the door center and below ceiling
                 //printf("in reading: i=%d, j=%d, k=%d \n", i, j, k); /// debugger
                 //fflush(stdout);
 
-                bool vox_trajhoods = 0, vox_voidhoods = 0, vox_tophoods = 0;
+                bool vox_trajhoods = false, vox_voidhoods = false, vox_tophoods = false;
                 /// should be smaller than door size
                 int ijk_inx = vec_ijk[i][j][k];
 
                 /// check if there is a close by trajectory
+                /// check if there is a close by trajectory
                 double vox_to_traj_dist = finder_traj.FindDistance(vox_cnts[ijk_inx], 1, EPS_DEFAULT);
                 //std::cout << "vox_to_traj_dist:" << vox_to_traj_dist << endl; //debug
-                if (vox_to_traj_dist <= 1.2 * vox_length){
-                    std::cout << "vox_to_traj_dist:" << vox_to_traj_dist << endl; //debug
-                    vox_trajhoods = 1;
+                if (vox_to_traj_dist <= 1.2 * vox_length){   /// default is root3 of voxellength -> 1.2 * vox_l
+                    //std::cout << "vox_to_traj_dist:" << vox_to_traj_dist << endl; //debug
+                    vox_trajhoods = true;
                     count_vox_trajhood++;
                 }
 
@@ -688,29 +690,30 @@ LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_po
                     int void_hood_window = n-2;
                     int nr_of_occupiedhoods = this->void_neighbourhood(min, i, j, k, void_hood_window);
                     if (nr_of_occupiedhoods <= 5){ /// being void indicator
-                        std::cout << "nr_of_occupiedhoods:" << nr_of_occupiedhoods << endl; //debug
-                        vox_voidhoods = 1;
+                        //std::cout << "nr_of_occupiedhoods:" << nr_of_occupiedhoods << endl; //debug
+                        vox_voidhoods = true;
                         count_vox_voidhood++;
                     }
                 }
 
                 /// for closed doors
                 /// check if current voxel has more than N occupied neighbors (for closed doors),
-                bool  vox_occupiedhood =0;
+                bool  vox_occupiedhood = false;
                 if (vox_trajhoods && vox_cnts[ijk_inx].Attribute(LabelTag) == 1){  // ==1 is occupied
                     int nr_of_occupiedhoods2 = this->void_neighbourhood(min, i, j, k, 3);
-                    if (nr_of_occupiedhoods2 >= 17) // 17 = 9 +9 voxels -1 ijk voxel
-                        vox_occupiedhood =1;
+                    if (nr_of_occupiedhoods2 >= 14) // 17 = 9 +9 voxels -1 ijk voxel
+                        vox_occupiedhood = true;
                 }
 
                 /// check if current voxel has some points on top-door
                 if (vox_trajhoods){
                     LaserPoints tophoods_center_points, lp_tmp; //outputs of the function
                     this -> top_cylinder_cap(tophoods_center_points, lp_tmp, min, i, j, k, step_c, cyl_radius);
-                    if (tophoods_center_points.size() >= 12) ///12 works # should be variable not a fix parameter
+                    //if(!tophoods_center_points.empty ()) std::cout << "tophoods_center_points:" << tophoods_center_points.size() << endl; // debug
+                    if (tophoods_center_points.size() >= 14) ///12 is default, # should be variable not a fix parameter
                     {
-                        std::cout << "tophoods_center_points:" << tophoods_center_points.size() << endl; // debug
-                        vox_tophoods = 1;
+                        //std::cout << "tophoods_center_points:" << tophoods_center_points.size() << endl; // debug
+                        vox_tophoods = true;
                         count_vox_tophood++;
                     }
                 }
@@ -735,7 +738,7 @@ LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_po
                 if (vox_tophoods && vox_trajhoods && vox_voidhoods){
                     LaserPoints top_center_points; // voxels above a door center
                     LaserPoints top_center_lp, top_door_lp; //  door voxel and laserpoints
-                    bool new_door_cluster =0;
+                    bool new_door_cluster = false;
                     this -> top_cylinder_cap(top_center_points, top_center_lp, min, i, j, k, step_c, cyl_radius);
 
                     if (top_center_points.size() >= 5) {
@@ -791,20 +794,27 @@ LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_po
     /// count doors clusters
     printf("door_cnt= %d \n", door_count);
 
+
     //doors_centers.Write("D://test//morph//result//doors_centers.laser", false);
     //top_doors_lp.Write("D://test//morph//result//top_doors_lp.laser", false);
     //closed_doors_cnt.Write("D://test//morph//result//closed_doors.laser", false);
     //closed_doors_lp.Write("D://test//morph//result//closed_doors_lp.laser", false);
 
-/*    doors_centers.Write("E://BR_data//ZebR//out//doors_space//doors_centers.laser", false);
-    top_doors_lp.Write("E://BR_data//ZebR//out//doors_space//top_doors_lp.laser", false);
-    closed_doors_cnt.Write("E://BR_data//ZebR//out//doors_space//closed_doors.laser", false);
-    closed_doors_lp.Write("E://BR_data//ZebR//out//doors_space//closed_doors_lp.laser", false);*/
+    /// add closed doors to the open doors
+    top_doors.AddPoints (closed_doors_cnt); // add closed doors to open doors, top doors voxel centers
+    top_doors_lp.AddPoints (closed_doors_lp); /// top doors laser points
 
-    doors_centers.Write("E:/BR_data/Diemen/process/out/door_detection/doors_centers.laser", false);
-    top_doors_lp.Write("E:/BR_data/Diemen/process/out/door_detection/top_doors_lp.laser", false);
-    closed_doors_cnt.Write("E:/BR_data/Diemen/process/out/door_detection/closed_doors.laser", false);
-    closed_doors_lp.Write("E:/BR_data/Diemen/process/out/door_detection/closed_doors_lp.laser", false);
+    char str_root[500];
+    strcpy (str_root,root);
+    top_doors_lp.Write(strcat(str_root,"top_door_lp.laser"), false);
+
+    /// debug
+/*    LaserPoints closed_doors;
+    closed_doors.AddPoints (closed_doors_cnt);
+    closed_doors.AddPoints (closed_doors_lp);
+    strcpy (str_root,root);
+    closed_doors.Write(strcat(str_root,"closed_doors.laser"), false);*/
+
 
     cout << endl;
     cout << "condition1, # of voxels near traj:" << count_vox_trajhood << endl;
@@ -812,6 +822,83 @@ LaserPoints LaserVoxel::door_detection(LaserPoints vox_cnts, LaserPoints traj_po
     cout << "condition3, # of voxels above the door:" << count_vox_tophood << endl;
 
    return top_doors;
+}
+
+/*  function not complete */
+//*****************************************************Door Detection new *********************************************/
+LaserPoints LaserVoxel::door_detection2(LaserPoints vox_cnts, LaserPoints traj_points, uint min,
+                                        double r_traj, double r_topdoor, double r_void,
+                                        vector<vector<vector<int> > > vec_ijk){
+
+    LaserPoints vox_centers_occupied;
+    vox_centers_occupied = vox_cnts.SelectTagValue(LabelTag, 1);
+    KNNFinder<LaserPoint> finder_traj(traj_points);
+    KNNFinder<LaserPoint> finder_voxel(vox_centers_occupied);
+
+    LaserPoints door_candidates;
+
+    int i, j, k;
+    for (i = 0; i < int(vox_num_X); i++)
+/*        if (i >= int(vox_num_X))
+            continue;*/
+        for ( j = 0; j < int(vox_num_Y); j++)
+/*            if (j >= int(vox_num_Y))
+                continue;*/
+            for ( k = 0; k < int(vox_num_Z); k++) {
+/*                if (k >= int(vox_num_Z))
+                    continue;*/
+                //printf ("\r in reading: i=%d, j=%d, k=%d", i, j, k); /// debugger
+                printf ("in reading: i=%d, j=%d, k=%d \n", i, j, k); /// debugger
+
+/*                if (i==3 && j==15 && k==26){
+                    std::cout << std::endl;
+                    std::cout<< "debug" << endl;
+                }
+                int ijk_inx = vec_ijk[i][j][k];
+                LaserPoint vox_p;
+                vox_p = vox_cnts[ijk_inx];
+
+                //if(  0.5 < vox_p.GetZ () && vox_p.GetZ () < 0.80 ){
+                /// this height could be a door center
+                /// check if there is a close by trajectory
+                double vox_to_traj_dist = finder_traj.FindDistance(vox_p, 1, EPS_DEFAULT);
+                if(vox_to_traj_dist <= r_traj){
+                    vector<double> dists;
+                    vector <int> indices;
+                    finder_voxel.FindKnn (vox_p, 50, dists, indices, r_topdoor);
+                    ///check if the neiborhood is void
+                    bool voidhood = false;
+                    bool tophood = false;
+                    int occupied_nbh_count=0;
+                    for (auto &d : dists ){
+                        if(d <= r_void){
+                            occupied_nbh_count++;
+                        }
+                    }
+                    if(occupied_nbh_count <=5){  /// the voxel is in empty space
+                        //voidhood =true;
+                        /// check if there are points on top of the door
+                        int top_nbh_count=0;
+                        LaserPoints top_lp;
+                        for (auto &inx : indices){
+                            LaserPoint p_tmp;
+                            p_tmp = vox_centers_occupied[inx];
+                            double z_difference;
+                            z_difference = fabs(vox_p.GetZ () - p_tmp.GetZ ());
+                            if(0.8 <= z_difference && z_difference <= 1.20){
+                                top_nbh_count++;
+                                top_lp.push_back (p_tmp);
+                            }
+                        }
+                        if(top_nbh_count > 5){ /// there are points on top of the voxel
+                            door_candidates.AddPoints (top_lp);
+                            door_candidates.push_back (vox_p);
+                        } /// if top hood
+                    } /// if void hood
+
+                } /// end if trajectory
+                //}*/
+            }
 }
 
 

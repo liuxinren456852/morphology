@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="480" mnemonic="1" />
-    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="520" mnemonic="2" />
-    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="663" mnemonic="3" />
-    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="560" mnemonic="4" />
+    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="481" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="521" mnemonic="2" />
+    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="664" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/Laservoxel.cpp" line="561" mnemonic="4" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
     <generated>
@@ -43,8 +43,8 @@
       <file leaf-file-name="Laservoxel.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Laservoxel.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19635">
-              <caret line="935" selection-start-line="935" selection-end-line="935" />
+            <state relative-caret-position="235">
+              <caret line="309" column="40" selection-start-line="309" selection-start-column="32" selection-end-line="309" selection-end-column="40" />
               <folding>
                 <element signature="e#1076#1099#0" expanded="true" />
                 <element signature="e#1391#5339#0" expanded="true" />
@@ -52,6 +52,7 @@
                 <element signature="e#6517#7063#0" expanded="true" />
                 <element signature="e#7065#8403#0" expanded="true" />
                 <element signature="e#8405#8749#0" expanded="true" />
+                <element signature="e#25731#36815#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,8 +61,17 @@
       <file leaf-file-name="Laservoxel.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Laservoxel.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3234">
-              <caret line="154" column="77" selection-start-line="154" selection-start-column="77" selection-end-line="154" selection-end-column="77" />
+            <state relative-caret-position="514">
+              <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indoor_reconstruction.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../indoor_geometry_reocnstruction/indoor_reconstruction.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="248">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
             </state>
           </provider>
         </entry>
@@ -69,26 +79,20 @@
       <file leaf-file-name="morphology_indoor.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/morphology_indoor.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+            <state relative-caret-position="144">
+              <caret line="375" column="90" selection-start-line="375" selection-start-column="90" selection-end-line="375" selection-end-column="90" />
               <folding>
                 <element signature="e#47#66#0" expanded="true" />
-                <marker date="1531833277465" expanded="true" signature="4364:5793" ph="..." />
-                <marker date="1531833277465" expanded="true" signature="5996:6484" ph="{...}" />
-                <marker date="1531833277465" expanded="false" signature="6555:6695" ph="{...}" />
-                <marker date="1531833277465" expanded="false" signature="7083:7498" ph="{...}" />
-                <marker date="1531833277465" expanded="true" signature="8057:14467" ph="{...}" />
-                <marker date="1531833277465" expanded="false" signature="14497:14715" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LaserPoint.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/LaserPoint.h">
+      <file leaf-file-name="morphology_indoor.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/morphology_indoor.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6531">
-              <caret line="311" column="9" selection-start-line="311" selection-start-column="9" selection-end-line="311" selection-end-column="9" />
+            <state relative-caret-position="441">
+              <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -96,8 +100,8 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="819">
-              <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+            <state relative-caret-position="336">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -105,29 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LaserPoint.cc" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/src/LaserPoint.cc">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2646">
-              <caret line="126" selection-start-line="126" selection-end-line="126" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LaserPoints.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/LaserPoints.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="33915">
-              <caret line="1615" column="16" selection-start-line="1615" selection-start-column="16" selection-end-line="1615" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+            <state relative-caret-position="598">
+              <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -144,41 +130,65 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LaserPoints.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/LaserPoints.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="37296">
+              <caret line="1776" column="9" selection-start-line="1776" selection-start-column="9" selection-end-line="1776" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnCompSegmentation.h" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ConnCompSegmentation.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
+              <folding>
+                <element signature="e#176#200#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>step_c</find>
-      <find>emptyspace</find>
-      <find>all_voxels_relabeled</find>
-      <find>door_dete</find>
-      <find>empty</find>
-      <find>LaserVoxel</find>
-      <find>labeltag0_cnt</find>
-      <find>min_erosion</find>
-      <find>Dilation</find>
-      <find>dilation</find>
-      <find>empty_space_all</find>
-      <find>this</find>
-      <find>index_from_realX</find>
-      <find>Vox</find>
-      <find>compare_voxels_tag</find>
-      <find>vox_cnt_erosion</find>
-      <find>erosion</find>
-      <find>connected component</find>
-      <find>connected component segmentation</find>
-      <find>analys</find>
-      <find>segment</find>
-      <find>connected</find>
-      <find>segmentation</find>
+      <find>closed_doors_cnt</find>
+      <find>r_void</find>
+      <find>continue</find>
       <find>vec_ijk</find>
-      <find>voxel_center</find>
-      <find>HasAttribute</find>
-      <find>ceil</find>
-      <find>ceiling_z</find>
-      <find>ceil_Zmin</find>
-      <find>vox</find>
+      <find>top_doors</find>
+      <find>top_cylinder_cap</find>
+      <find>cyl_radius</find>
+      <find>door_top_detection</find>
+      <find>voxels above</find>
+      <find>trajectory1</find>
+      <find>count_vox_tophood</find>
+      <find>segment</find>
+      <find>performing ero</find>
+      <find>transfer_voxel_attributes</find>
+      <find>ceil_Zmax</find>
+      <find>vox_cents_erose</find>
+      <find>export_vox_centres</find>
+      <find>min_points_in_vox</find>
+      <find>vox_centers_dilate_unoccupied_reselected</find>
+      <find>server</find>
+      <find>laserpoints</find>
+      <find>select_byZ</find>
+      <find>vox_centers_erose_unoccupied_selected</find>
+      <find>win</find>
+      <find>\\</find>
+      <find>navvis</find>
+      <find>tophoods_</find>
+      <find>connected</find>
+      <find>LabelTag</find>
+      <find>root</find>
     </findStrings>
+    <replaceStrings>
+      <replace>/</replace>
+    </replaceStrings>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Laservoxel.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -191,12 +201,12 @@
         <option value="$PROJECT_DIR$/morphology_indoor_v1.0.cpp" />
         <option value="$PROJECT_DIR$/3dbbox.cpp" />
         <option value="$PROJECT_DIR$/../../Library/LaserScan/include/LaserPoint.h" />
-        <option value="$PROJECT_DIR$/morphology_indoor.h" />
-        <option value="$PROJECT_DIR$/Laservoxel.h" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/ConnCompSegmentation.h" />
         <option value="$PROJECT_DIR$/ConnCompSegmentation.cpp" />
+        <option value="$PROJECT_DIR$/Laservoxel.h" />
         <option value="$PROJECT_DIR$/Laservoxel.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/morphology_indoor.h" />
         <option value="$PROJECT_DIR$/main.cpp" />
         <option value="$PROJECT_DIR$/morphology_indoor.cpp" />
       </list>
@@ -214,27 +224,9 @@
     </layout>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1050" />
-  </component>
-  <component name="ProjectInspectionProfilesVisibleTreeState">
-    <entry key="Project Default">
-      <profile-state>
-        <expanded-state>
-          <State>
-            <id />
-          </State>
-        </expanded-state>
-        <selected-state>
-          <State>
-            <id>C/C++</id>
-          </State>
-        </selected-state>
-      </profile-state>
-    </entry>
+  <component name="ProjectFrameBounds">
+    <option name="width" value="1920" />
+    <option name="height" value="1032" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -259,6 +251,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Library/LaserScan/src" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Mapping\Tools\morphology" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -447,17 +444,18 @@
     <option name="totallyTimeSpent" value="649974000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1170" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1032" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16181915" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16337426" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="CMake" order="7" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" sideWeight="0.846875" visible="true" weight="0.26352128" />
+      <window_info anchor="bottom" id="CMake" order="7" weight="0.32969216" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.153125" side_tool="true" weight="0.37777779" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.22939424" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20023015" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.83177084" weight="0.39721945" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.83177084" weight="0.3962264" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -465,7 +463,6 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="right" id="Data View" order="3" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" sideWeight="0.846875" visible="true" weight="0.367428" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286991" />
@@ -492,17 +489,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/Laservoxel.cpp</url>
-          <line>430</line>
+          <line>431</line>
           <option name="timeStamp" value="286" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/morphology_indoor.cpp</url>
-          <line>145</line>
-          <option name="timeStamp" value="296" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/morphology_indoor.cpp</url>
-          <line>373</line>
+          <line>649</line>
           <option name="timeStamp" value="299" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
@@ -511,22 +503,22 @@
           <option name="timeStamp" value="301" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/morphology_indoor.cpp</url>
-          <line>83</line>
-          <option name="timeStamp" value="303" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>106</line>
+          <line>141</line>
           <option name="timeStamp" value="304" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/main.cpp</url>
-          <line>89</line>
+          <line>124</line>
           <option name="timeStamp" value="306" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/morphology_indoor.cpp</url>
+          <line>601</line>
+          <option name="timeStamp" value="322" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="307" />
+      <option name="time" value="323" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
@@ -537,19 +529,13 @@
         <watch expression="tophoods_center_points.size()" />
         <watch expression="voxel_centers" />
         <watch expression="p.HasAttribute (SegmentNumberTag)" />
+        <watch expression="i" />
+        <watch expression="j" />
+        <watch expression="k" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/LaserObjects.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2380">
-          <caret line="447" column="6" selection-start-line="447" selection-start-column="6" selection-end-line="447" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include/math.h" />
-    <entry file="file://C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.7.1/include-fixed/limits.h" />
     <entry file="file://C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.7.1/include/c++/bits/stl_iterator.h" />
     <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/src/Components.cc">
       <provider selected="true" editor-type-id="text-editor">
@@ -643,20 +629,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/KNNFinder.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="315" column="31" selection-start-line="315" selection-start-column="31" selection-end-line="315" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Laservoxel_morphology.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="309" selection-start-line="309" selection-end-line="507" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.js" />
     <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/DataBoundsLaser.h">
       <provider selected="true" editor-type-id="text-editor">
@@ -691,13 +663,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-230">
           <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/morphology_indoor.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="26" column="83" selection-start-line="26" selection-start-column="83" selection-end-line="26" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -736,30 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ConnCompSegmentation.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ConnCompSegmentation.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
-          <folding>
-            <element signature="e#47#68#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/SegmentFinder.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -783,32 +724,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/src/LaserPoint.cc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2646">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        <state relative-caret-position="9891">
+          <caret line="471" selection-start-line="471" selection-end-line="471" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.cpp">
+    <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/KNNFinder.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="819">
-          <caret line="39" column="71" selection-start-line="39" selection-start-column="71" selection-end-line="39" selection-end-column="71" />
+        <state relative-caret-position="439">
+          <caret line="248" column="11" selection-start-line="248" selection-start-column="11" selection-end-line="248" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erosion_step2.cpp" />
+    <entry file="file://$PROJECT_DIR$/ConnCompSegmentation.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="13" column="58" selection-start-line="13" selection-start-column="58" selection-end-line="13" selection-end-column="58" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#176#200#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../Library/LaserScan/include/LaserPoints.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="33915">
-          <caret line="1615" column="16" selection-start-line="1615" selection-start-column="16" selection-end-line="1615" selection-end-column="16" />
+        <state relative-caret-position="37296">
+          <caret line="1776" column="9" selection-start-line="1776" selection-start-column="9" selection-end-line="1776" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ConnCompSegmentation.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="23" column="63" selection-start-line="23" selection-start-column="63" selection-end-line="23" selection-end-column="63" />
+          <folding>
+            <element signature="e#47#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Laservoxel_morphology.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="310" column="59" selection-start-line="310" selection-start-column="59" selection-end-line="310" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../indoor_geometry_reocnstruction/MLS_preprocessing.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#1078#3267#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="35" column="65" selection-start-line="35" selection-start-column="65" selection-end-line="35" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Laservoxel.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../indoor_geometry_reocnstruction/indoor_reconstruction.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Laservoxel.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19635">
-          <caret line="935" selection-start-line="935" selection-end-line="935" />
+        <state relative-caret-position="235">
+          <caret line="309" column="40" selection-start-line="309" selection-start-column="32" selection-end-line="309" selection-end-column="40" />
           <folding>
             <element signature="e#1076#1099#0" expanded="true" />
             <element signature="e#1391#5339#0" expanded="true" />
@@ -816,29 +813,34 @@
             <element signature="e#6517#7063#0" expanded="true" />
             <element signature="e#7065#8403#0" expanded="true" />
             <element signature="e#8405#8749#0" expanded="true" />
+            <element signature="e#25731#36815#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Laservoxel.h">
+    <entry file="file://$PROJECT_DIR$/morphology_indoor.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3234">
-          <caret line="154" column="77" selection-start-line="154" selection-start-column="77" selection-end-line="154" selection-end-column="77" />
+        <state relative-caret-position="441">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/morphology_indoor.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="79" column="5" lean-forward="true" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        <state relative-caret-position="144">
+          <caret line="375" column="90" selection-start-line="375" selection-start-column="90" selection-end-line="375" selection-end-column="90" />
           <folding>
             <element signature="e#47#66#0" expanded="true" />
-            <marker date="1531833277465" expanded="true" signature="4364:5793" ph="..." />
-            <marker date="1531833277465" expanded="true" signature="5996:6484" ph="{...}" />
-            <marker date="1531833277465" expanded="false" signature="6555:6695" ph="{...}" />
-            <marker date="1531833277465" expanded="false" signature="7083:7498" ph="{...}" />
-            <marker date="1531833277465" expanded="true" signature="8057:14467" ph="{...}" />
-            <marker date="1531833277465" expanded="false" signature="14497:14715" ph="{...}" />
           </folding>
         </state>
       </provider>
